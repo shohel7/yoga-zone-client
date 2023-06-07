@@ -1,5 +1,5 @@
 import React from "react";
-import { GrYoga } from "react-icons/Gr";
+import { TbYoga } from "react-icons/Tb";
 import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css";
 // import { AuthContext } from "../../../providers/AuthProvider";
@@ -22,21 +22,21 @@ const NavBar = () => {
 
   const navOptions = (
     <>
-      <li>
+      <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
         <Link to="/">Home</Link>
       </li>
-      <li>
+      <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
         <Link to="/menu">Instructors</Link>
       </li>
-      <li>
+      <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
         <Link to="/order/salad">Classes</Link>
       </li>
       {isAdmin ? (
-        <li>
+        <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
           <Link to="/dashboard/adminhome">Dashboard</Link>
         </li>
       ) : (
-        <li>
+        <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
           <Link to="/dashboard/userhome">Dashboard</Link>
         </li>
       )}
@@ -48,9 +48,10 @@ const NavBar = () => {
         </> */}
       {/* ) : ( */}
       {/* <> */}
-      <li>
+      <button className="border-2 border-[#5FC7AE] px-8 py-2 rounded-full hover:bg-[#AFE3D6] hover:text-translate-x-4 transition-all duration-200 ease-in-out hover:text-white uppercase">
         <Link to="/login">Login</Link>
-      </li>
+      </button>
+
       {/* </> */}
       {/* )} */}
     </>
@@ -80,23 +81,23 @@ const NavBar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-base"
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-gray-500 "
               >
                 {navOptions}
               </ul>
             </div>
             <Link to="/">
-              <span className="flex items-center space-x-3">
-                <GrYoga className="text-4xl text-[#F29D7E]" />
+              <span className="flex items-center space-x-2">
+                <TbYoga className="text-4xl stroke-[#5FC7AE]" />
 
-                <p className="text-xl text-[#345A5B] font-bold cursor-pointer">
-                  YOGA ZONE
+                <p className="text-xl text-gray-500 font-bold cursor-pointer">
+                  YOGA<span className="text-[#5FC7AE]">ZONE</span>
                 </p>
               </span>
             </Link>
           </div>
           <div className="navbar-end hidden lg:flex">
-            <ul className="menu-horizontal px-1 space-x-10 text-gray-800 font-medium text-base font-serif items-center">
+            <ul className="menu-horizontal px-1 space-x-10 font-medium text-gray-500 items-center">
               {navOptions}
             </ul>
           </div>
