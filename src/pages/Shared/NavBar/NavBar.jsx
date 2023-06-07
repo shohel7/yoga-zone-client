@@ -23,13 +23,28 @@ const NavBar = () => {
   const navOptions = (
     <>
       <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
-        <Link to="/">Home</Link>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active" : "default")}
+          to="/"
+        >
+          Home
+        </NavLink>
       </li>
       <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
-        <Link to="/menu">Instructors</Link>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active" : "default")}
+          to="/menu"
+        >
+          Instructors
+        </NavLink>
       </li>
       <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
-        <Link to="/order/salad">Classes</Link>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active" : "default")}
+          to="/order/salad"
+        >
+          Classes
+        </NavLink>
       </li>
       {isAdmin ? (
         <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
@@ -48,7 +63,7 @@ const NavBar = () => {
         </> */}
       {/* ) : ( */}
       {/* <> */}
-      <button className="border-2 border-[#5FC7AE] px-8 py-2 rounded-full hover:bg-[#AFE3D6] hover:text-translate-x-4 transition-all duration-200 ease-in-out hover:text-white uppercase">
+      <button className="border border-[#5FC7AE] px-8 py-2 rounded-full hover:bg-[#AFE3D6] transition-all duration-200 ease-in-out text-gray-600 uppercase">
         <Link to="/login">Login</Link>
       </button>
 
