@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Roberta smart",
+    "email": "roberta@gmail.com",
+    "numberOfStudents": 18,
+    "numberOfClass": 3,
+    "nameOfClass": "Ashtanga yoga",
+    "image": "https://i.ibb.co/tZHw1QQ/instructor-1.jpg"
+  },
+  {
+    "name": "Linda Crow",
+    "email": "linda@gmail.com",
+    "numberOfStudents": 15,
+    "numberOfClass": 2,
+    "nameOfClass": "Kundalini yoga",
+    "image": "https://i.ibb.co/5Lpm4W9/instructor-2.jpg"
+  },
+  {
+    "name": "Miranda Roberts",
+    "email": "miranda@gmail.com",
+    "numberOfStudents": 20,
+    "numberOfClass": 7,
+    "nameOfClass": "Lyerngar yoga",
+    "image": "https://i.ibb.co/zs7pJJD/instructor-3.jpg"
+  },
+  {
+    "name": "Alexa Brust",
+    "email": "alex@gmail.com",
+    "numberOfStudents": 12,
+    "numberOfClass": 9,
+    "nameOfClass": "Hot yoga",
+    "image": "https://i.ibb.co/XyQMXX9/instructor-4.jpg"
+  },
+  {
+    "name": "Marta Kerr",
+    "email": "marta@gmail.com",
+    "numberOfStudents": 28,
+    "numberOfClass": 10,
+    "nameOfClass": "Hatha yoga",
+    "image": "https://i.ibb.co/q5hHf0V/instructor-5.jpg"
+  },
+  {
+    "name": "Laura Dawson",
+    "email": "laura@gmail.com",
+    "numberOfStudents": 15,
+    "numberOfClass": 4,
+    "nameOfClass": "Vinyasa yoga",
+    "image": "https://i.ibb.co/gwSmwyY/instructor-6.jpg"
+  },
+  {
+    "name": "Laura Dawson",
+    "email": "laura@gmail.com",
+    "numberOfStudents": 50,
+    "numberOfClass": 8,
+    "nameOfClass": "Restorative yoga",
+    "image": "https://i.ibb.co/gwSmwyY/instructor-6.jpg"
+  },
+  {
+    "name": "Laura Dawson",
+    "email": "laura@gmail.com",
+    "numberOfStudents": 22,
+    "numberOfClass": 5,
+    "nameOfClass": "Power yoga",
+    "image": "https://i.ibb.co/gwSmwyY/instructor-6.jpg"
+  }
+]

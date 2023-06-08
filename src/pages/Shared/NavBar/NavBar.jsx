@@ -5,7 +5,7 @@ import "./NavBar.css";
 // import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
-  const isAdmin = false;
+  const isAdmin = true;
   //   const { user, logOut } = useContext(AuthContext);
   //   const [showUl, setShowUl] = useState(false);
 
@@ -73,11 +73,11 @@ const NavBar = () => {
   );
 
   return (
-    <div className=" ">
+    <div className="">
       <div className="px-5 md:px-5 lg:max-w-[1230px] mx-auto">
         <div className="navbar py-5">
           <div className="navbar-start">
-            <div className="dropdown ">
+            <div className="dropdown relative right-0 z-20">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@ const NavBar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-gray-500 "
+                className="menu-compact dropdown-content mt-3 p-4 space-y-3 shadow bg-base-100 rounded-box w-52 text-base text-gray-500"
               >
                 {navOptions}
               </ul>
@@ -112,7 +112,7 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="navbar-end hidden lg:flex">
-            <ul className="menu-horizontal px-1 space-x-10 font-medium text-gray-500 items-center">
+            <ul className="menu-horizontal px-1 space-x-10 font-medium text-base text-gray-500 items-center">
               {navOptions}
             </ul>
           </div>

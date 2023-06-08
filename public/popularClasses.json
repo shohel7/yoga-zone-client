@@ -1,0 +1,66 @@
+[
+  {
+    "className": "Ashtanga yoga",
+    "instructorName": "Tina Wang",
+    "numberOfStudents": 18,
+    "availableSeats": 3,
+    "price": 99,
+    "image": "https://i.ibb.co/D7q9fMN/Ashtanga-yogas.webp"
+  },
+  {
+    "className": "Kundalini yoga",
+    "instructorName": "Vicky Wang",
+    "numberOfStudents": 15,
+    "availableSeats": 2,
+    "price": 999,
+    "image": "https://i.ibb.co/QrwLpLW/Kundalini-yoga.webp"
+  },
+  {
+    "className": "Lyerngar yoga",
+    "instructorName": "Maggie Jones",
+    "numberOfStudents": 20,
+    "availableSeats": 7,
+    "price": 1290,
+    "image": "https://i.ibb.co/DwXqFP7/Iyengar-yoga.jpg"
+  },
+  {
+    "className": "Hot yoga",
+    "instructorName": "Jennifer Doe",
+    "numberOfStudents": 12,
+    "availableSeats": 9,
+    "price": 989,
+    "image": "https://i.ibb.co/mh5snJ5/Hot-yoga.jpg"
+  },
+  {
+    "className": "Hatha yoga",
+    "instructorName": "Vicky Lewis",
+    "numberOfStudents": 28,
+    "availableSeats": 10,
+    "price": 209,
+    "image": "https://i.ibb.co/JQ0j0pt/Hatha-yoga.jpg"
+  },
+  {
+    "className": "Vinyasa yoga",
+    "instructorName": "Jacline Lewis",
+    "numberOfStudents": 15,
+    "availableSeats": 4,
+    "price": 999,
+    "image": "https://i.ibb.co/ZVR3v8M/Vinyasa-yoga.jpg"
+  },
+  {
+    "className": "Restorative yoga",
+    "instructorName": "Jack Denials",
+    "numberOfStudents": 50,
+    "availableSeats": 8,
+    "price": 800,
+    "image": "https://i.ibb.co/n3ZvWyB/Restorative-yoga.jpg"
+  },
+  {
+    "className": "Power yoga",
+    "instructorName": "Lopez Wang",
+    "numberOfStudents": 22,
+    "availableSeats": 5,
+    "price": 999,
+    "image": "https://i.ibb.co/7gzth23/Power-yoga.webp"
+  }
+]
