@@ -2,7 +2,7 @@ import { TbYoga } from "react-icons/Tb";
 
 const SectionTitle = ({ heading, paragraph }) => {
   return (
-    <div className="my-8">
+    <div className="my-10">
       <span className="mx-auto text-center md:w-4/12">
         <h3 className="text-gray-600 text-xl md:text-3xl font-semibold uppercase py-2">
           {heading}
