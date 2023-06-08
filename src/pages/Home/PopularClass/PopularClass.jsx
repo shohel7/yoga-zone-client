@@ -22,8 +22,6 @@ const PopularClass = () => {
 
   if (error) return "An error has occurred: " + error.message;
 
-  console.log(classes);
-
   return (
     <div className="px-5 md:px-5 lg:max-w-[1230px] mx-auto">
       <SectionTitle
@@ -34,7 +32,10 @@ const PopularClass = () => {
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-x-0">
         {classes.map((classes) => (
-          <div className="border md:w-[360px] bg-base-100 hover:shadow-xl">
+          <div
+            key={classes?._id}
+            className="border md:w-[360px] bg-base-100 hover:shadow-xl"
+          >
             <figure className="relative">
               <img
                 className="h-[250px] w-full"
