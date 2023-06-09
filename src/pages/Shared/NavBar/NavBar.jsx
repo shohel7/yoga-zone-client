@@ -1,23 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { TbYoga } from "react-icons/Tb";
 import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css";
-// import { AuthContext } from "../../../providers/AuthProvider";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
   const isAdmin = true;
-  //   const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   //   const [showUl, setShowUl] = useState(false);
 
   //   const handleUl = () => {
   //     setShowUl(true);
   //   };
 
-  //   const handleLogOut = () => {
-  //     logOut()
-  //       .then((result) => {})
-  //       .catch((error) => console.log(error.message));
-  //   };
+  const handleLogOut = () => {
+    logOut()
+      .then((result) => {})
+      .catch((error) => console.log(error.message));
+  };
   // sticky top-0 z-30 w-full shadow-xl blur-effect-theme
 
   const navOptions = (
@@ -55,20 +55,42 @@ const NavBar = () => {
           <Link to="/dashboard/userhome">Dashboard</Link>
         </li>
       )}
-      {/* {user ? ( */}
-      {/* <>
-          <button onClick={handleLogOut} className="btn btn-ghost">
-            LogOut
-          </button>
-        </> */}
-      {/* ) : ( */}
-      {/* <> */}
-      <button className="border border-[#5FC7AE] px-8 py-2 rounded-full hover:bg-[#AFE3D6] transition-all duration-200 ease-in-out text-gray-600 uppercase">
-        <Link to="/login">Login</Link>
-      </button>
-
-      {/* </> */}
-      {/* )} */}
+      {user?.email ? (
+        <div className="dropdown md:dropdown-end">
+          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
+              {user && (
+                <img
+                  src={user?.photoURL}
+                  alt="profile-img"
+                  title={user?.displayName}
+                />
+              )}
+            </div>
+          </label>
+          <ul
+            tabIndex={0}
+            className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 z-30"
+          >
+            <li>
+              <a className="justify-between">
+                Profile
+                <span className="badge">New</span>
+              </a>
+            </li>
+            <li>
+              <a>Settings</a>
+            </li>
+            <li onClick={handleLogOut}>
+              <a>Logout</a>
+            </li>
+          </ul>
+        </div>
+      ) : (
+        <button className="border border-[#5FC7AE] px-8 py-2 rounded-full hover:bg-[#AFE3D6] transition-all duration-200 ease-in-out text-gray-600 uppercase">
+          <Link to="/login">Login</Link>
+        </button>
+      )}
     </>
   );
 
