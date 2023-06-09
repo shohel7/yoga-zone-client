@@ -6,6 +6,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
   const isAdmin = true;
+  const isInstructor = false;
   const { user, logOut } = useContext(AuthContext);
   //   const [showUl, setShowUl] = useState(false);
 
@@ -49,6 +50,10 @@ const NavBar = () => {
       {isAdmin ? (
         <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
           <Link to="/dashboard/adminhome">Dashboard</Link>
+        </li>
+      ) : isInstructor ? (
+        <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
+          <Link to="/dashboard/instructorhome">Dashboard</Link>
         </li>
       ) : (
         <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
