@@ -7,10 +7,13 @@ import {
   FaUsersCog,
   FaUserPlus,
 } from "react-icons/fa";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-  const isAdmin = true;
-  const isInstructor = false;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+  // const isInstructor = false;
   return (
     <>
       <div className="drawer lg:drawer-open">

@@ -3,10 +3,14 @@ import { TbYoga } from "react-icons/Tb";
 import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const NavBar = () => {
-  const isAdmin = true;
-  const isInstructor = false;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+  // const isAdmin = true;
+  // const isInstructor = false;
   const { user, logOut } = useContext(AuthContext);
   //   const [showUl, setShowUl] = useState(false);
 
