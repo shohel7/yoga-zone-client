@@ -40,7 +40,23 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        console.log(result.user);
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        const saveUser = {
+          name: loggedInUser.displayName,
+          email: loggedInUser.email,
+        };
+
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            navigate(from, { replace: true });
+          });
+
         navigate(from, { replace: true });
       })
       .catch((err) => {

@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 
 const Dashboard = () => {
-  const isAdmin = false;
+  const isAdmin = true;
   const isInstructor = false;
   return (
     <>

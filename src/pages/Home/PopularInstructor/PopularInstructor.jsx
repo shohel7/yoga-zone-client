@@ -11,7 +11,7 @@ const PopularInstructor = () => {
   } = useQuery({
     queryKey: ["instructors"],
     queryFn: async () => {
-      const data = await axios.get("http://localhost:5000/popularInstructors");
+      const data = await axios.get("http://localhost:5000/instructors");
       // console.log(data?.data);
       return data?.data;
     },

@@ -15,6 +15,7 @@ const SignUp = () => {
     createUser,
     signInWithGoogle,
     updateUserProfile,
+    logOut,
   } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -55,8 +56,27 @@ const SignUp = () => {
           .then((result) => {
             updateUserProfile(data.name, imageUrl)
               .then(() => {
-                toast.success("Sign up successful");
-                navigate(from, { replace: true });
+                const saveUser = { name: data.name, email: data.email };
+
+                fetch("http://localhost:5000/users", {
+                  method: "POST",
+                  headers: { "content-type": "application/json" },
+                  body: JSON.stringify(saveUser),
+                })
+                  .then((res) => res.json())
+                  .then((data) => {
+                    if (data.insertedId) {
+                      toast.success("Successfully created new user");
+                      // navigate(from, { replace: true });
+                      logOut()
+                        .then((result) => {
+                          navigate("/login");
+                        })
+                        .catch((err) => {
+                          console.log(err);
+                        });
+                    }
+                  });
               })
               .catch((err) => {
                 setLoading(false);
@@ -82,7 +102,23 @@ const SignUp = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        console.log(result.user);
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        const saveUser = {
+          name: loggedInUser.displayName,
+          email: loggedInUser.email,
+        };
+
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            navigate(from, { replace: true });
+          });
+
         navigate(from, { replace: true });
       })
       .catch((err) => {
