@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
   const { data: users = [], refetch } = useQuery(["user"], async () => {
@@ -8,6 +9,44 @@ const ManageUsers = () => {
     return res.json();
   });
 
+  const handleMakeAdmin = (user) => {
+    fetch(`http://localhost:5000/users/admin/${user?._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${user?.name} is an Admin Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+  const handleMakeInstructor = (user) => {
+    fetch(`http://localhost:5000/users/instructor/${user?._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${user?.name} is an Instructor Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
+  // TODO
   const handleDelete = (user) => {
     console.log(user);
   };
@@ -37,26 +76,40 @@ const ManageUsers = () => {
                 <td>
                   {user?.role === "admin" ? (
                     <>
-                      <button className="btn mr-3 bg-[#5FC7AE] hover:bg-none hover:bg-[#5FC7AE] text-white">
-                        Make Admin
+                      <button
+                        onClick={() => handleMakeAdmin(user)}
+                        className="btn mr-3 bg-[#5FC7AE] hover:bg-none hover:bg-[#5FC7AE] text-white"
+                        disabled
+                      >
+                        Admin
                       </button>
                     </>
                   ) : (
                     <>
-                      <button className="btn mr-3 bg-[#5FC7AE] hover:bg-none hover:bg-[#5FC7AE] text-white">
-                        Admin
+                      <button
+                        onClick={() => handleMakeAdmin(user)}
+                        className="btn mr-3 bg-[#5FC7AE] hover:bg-none hover:bg-[#5FC7AE] text-white"
+                      >
+                        Make Admin
                       </button>
                     </>
                   )}
                   {user?.role === "instructor" ? (
                     <>
-                      <button className="btn bg-[#5FC7AE] hover:bg-none hover:bg-[#5FC7AE] text-white">
+                      <button
+                        onClick={() => handleMakeInstructor(user)}
+                        className="btn bg-[#5FC7AE] hover:bg-none hover:bg-[#5FC7AE] text-white"
+                        disabled
+                      >
                         Instructor
                       </button>
                     </>
                   ) : (
                     <>
-                      <button className="btn bg-[#5FC7AE] hover:bg-none hover:bg-[#5FC7AE] text-white">
+                      <button
+                        onClick={() => handleMakeInstructor(user)}
+                        className="btn bg-[#5FC7AE] hover:bg-none hover:bg-[#5FC7AE] text-white"
+                      >
                         Make Instructor
                       </button>
                     </>
