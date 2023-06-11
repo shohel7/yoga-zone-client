@@ -12,7 +12,7 @@ const PopularClass = () => {
   } = useQuery({
     queryKey: ["data"],
     queryFn: async () => {
-      const data = await axios.get("http://localhost:5000/classes");
+      const data = await axios.get("http://localhost:5000/popularClasses");
       // console.log(data?.data);
       return data?.data;
     },

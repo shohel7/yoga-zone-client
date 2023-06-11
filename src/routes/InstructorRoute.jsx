@@ -8,7 +8,9 @@ const InstructorRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading || isInstructorLoading) {
-    return <progress className="progress w-56"></progress>;
+    return (
+      <span className="loading loading-bars loading-lg text-[#5FC7AE]"></span>
+    );
   }
 
   if (user && isInstructor) {
