@@ -3,8 +3,12 @@ import axios from "axios";
 import React from "react";
 import SectionTitle from "../Shared/SectionTitle/SectionTitle";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Classes = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const {
     data: classes = [],
     isLoading,
@@ -13,7 +17,7 @@ const Classes = () => {
     queryKey: ["classesData"],
     queryFn: async () => {
       const data = await axios.get(
-        `http://localhost:5000/classes?status=approved`
+        `http://localhost:5000/classes/approved?status=approved`
       );
       // console.log(data?.data);
       return data?.data;
@@ -28,26 +32,55 @@ const Classes = () => {
     );
 
   const handleSelectedClass = (item) => {
-    console.log(item);
-    fetch(`http://localhost:5000/selectedClasses`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(item),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Added Selected Class successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+    if (user) {
+      console.log(item);
+      fetch(`http://localhost:5000/selectedClasses`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(item),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Added Selected Class successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+    } else {
+      Swal.fire({
+        title: "You are new user?",
+        text: "You have to log in first to Selected!",
+        confirmButtonColor: "#345A5E",
+        confirmButtonText: "Yes, login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
         }
       });
+    }
   };
+
+  // const handleDetails = (id) => {
+  //   console.log("click on details");
+  //   if (!user) {
+  //     Swal.fire({
+  //       title: "You are new user?",
+  //       text: "You have to log in first to view details!",
+  //       confirmButtonColor: "#345A5E",
+  //       confirmButtonText: "Yes, login",
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         navigate(`/toy/${id}`);
+  //       }
+  //     });
+  //   }
+  // };
 
   return (
     <div className="px-5 md:px-5 lg:max-w-[1230px] mx-auto">

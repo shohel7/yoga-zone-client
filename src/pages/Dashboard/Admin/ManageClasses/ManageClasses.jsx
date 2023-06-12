@@ -8,6 +8,7 @@ const ManageClasses = () => {
     const res = await fetch("http://localhost:5000/classes");
     return res.json();
   });
+  console.log(classes);
 
   const handleMakeApproved = (id) => {
     fetch(`http://localhost:5000/classes/approved/${id}`, {

@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Payment from "../../Payment/Payment";
+import Swal from "sweetalert2";
 
 const SelectedClasses = () => {
+  const [items, setItems] = useState([]);
   const {
     data: selectedClass = [],
     isLoading,
@@ -23,7 +27,27 @@ const SelectedClasses = () => {
         <span className="loading loading-bars loading-lg text-[#5FC7AE]"></span>
       </div>
     );
-  console.log(selectedClass);
+
+  const handleDelete = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/selectedClasses/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Selected class deleted successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
   return (
     <div className="w-full px-7">
       <h2 className="text-2xl font-semibold my-4">
@@ -62,15 +86,24 @@ const SelectedClasses = () => {
                 <td>{item?.availableSeats}</td>
                 <td>${item?.price}</td>
                 <td>
-                  <button className="btn">
+                  <button
+                    onClick={() => handleDelete(item?._id)}
+                    className="btn"
+                  >
                     <FaTrashAlt />
                   </button>
                 </td>
                 <td>
-                  <button className="btn">Pay</button>
+                  <div onClick={() => window.my_modal_1.showModal()}>
+                    <button onClick={() => setItems(item)} className="btn">
+                      Pay
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
+
+            <Payment item={items} />
           </tbody>
         </table>
       </div>
