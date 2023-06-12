@@ -17,6 +17,8 @@ import PaymentHistory from "../pages/Dashboard/User/PaymentHistory/PaymentHistor
 import EnrollClasses from "../pages/Dashboard/User/EnrollClasses/EnrollClasses";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import Classes from "../pages/Classes/Classes";
+import Instructors from "../pages/Instructors/Instructors";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "classes",
+        element: <Classes />,
+      },
+      {
+        path: "instructors",
+        element: <Instructors />,
       },
       {
         path: "login",

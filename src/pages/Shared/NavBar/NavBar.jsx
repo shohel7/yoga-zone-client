@@ -38,7 +38,7 @@ const NavBar = () => {
       <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
         <NavLink
           className={({ isActive }) => (isActive ? "active" : "default")}
-          to="/menu"
+          to="/instructors"
         >
           Instructors
         </NavLink>
@@ -46,7 +46,7 @@ const NavBar = () => {
       <li className="hover:text-[#5FC7AE] transition-all duration-200 ease-in-out">
         <NavLink
           className={({ isActive }) => (isActive ? "active" : "default")}
-          to="/order/salad"
+          to="/classes"
         >
           Classes
         </NavLink>
