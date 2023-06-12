@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import SectionTitle from "../Shared/SectionTitle/SectionTitle";
+import Swal from "sweetalert2";
 
 const Classes = () => {
   const {
@@ -28,6 +29,24 @@ const Classes = () => {
 
   const handleSelectedClass = (item) => {
     console.log(item);
+    fetch(`http://localhost:5000/selectedClasses`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(item),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Added Selected Class successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (
