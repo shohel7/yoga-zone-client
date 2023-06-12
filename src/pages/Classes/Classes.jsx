@@ -5,9 +5,13 @@ import SectionTitle from "../Shared/SectionTitle/SectionTitle";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Classes = () => {
   const { user } = useAuth();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   const navigate = useNavigate();
   const {
     data: classes = [],
@@ -66,22 +70,6 @@ const Classes = () => {
     }
   };
 
-  // const handleDetails = (id) => {
-  //   console.log("click on details");
-  //   if (!user) {
-  //     Swal.fire({
-  //       title: "You are new user?",
-  //       text: "You have to log in first to view details!",
-  //       confirmButtonColor: "#345A5E",
-  //       confirmButtonText: "Yes, login",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         navigate(`/toy/${id}`);
-  //       }
-  //     });
-  //   }
-  // };
-
   return (
     <div className="px-5 md:px-5 lg:max-w-[1230px] mx-auto">
       <SectionTitle
@@ -94,7 +82,9 @@ const Classes = () => {
         {classes.map((item) => (
           <div
             key={item?._id}
-            className="border md:w-[360px] bg-base-100 hover:shadow-xl"
+            className={`border p-2 md:w-[360px] bg-base-100 hover:shadow-xl ${
+              item?.availableSeats <= 0 ? "bg-red-300" : ""
+            }`}
           >
             <figure className="relative">
               <img
@@ -133,12 +123,26 @@ const Classes = () => {
                   $ {item?.price}
                 </span>
               </div>
-              <button
-                onClick={() => handleSelectedClass(item)}
-                className="btn mt-4 bg-[#5FC7AE] text-white hover:bg-[#5FC7AE]"
-              >
-                Selected
-              </button>
+              {item?.availableSeats <= 0 || isAdmin || isInstructor ? (
+                <>
+                  <button
+                    onClick={() => handleSelectedClass(item)}
+                    className="btn mt-4 bg-[#5FC7AE] text-white hover:bg-[#5FC7AE]"
+                    disabled
+                  >
+                    Selected
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => handleSelectedClass(item)}
+                    className="btn mt-4 bg-[#5FC7AE] text-white hover:bg-[#5FC7AE]"
+                  >
+                    Selected
+                  </button>
+                </>
+              )}
             </div>
           </div>
         ))}
