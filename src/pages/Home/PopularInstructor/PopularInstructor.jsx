@@ -11,7 +11,9 @@ const PopularInstructor = () => {
   } = useQuery({
     queryKey: ["instructors"],
     queryFn: async () => {
-      const data = await axios.get("http://localhost:5000/popularInstructors");
+      const data = await axios.get(
+        "https://yoga-zone-server.vercel.app/popularInstructors"
+      );
       // console.log(data?.data);
       return data?.data;
     },

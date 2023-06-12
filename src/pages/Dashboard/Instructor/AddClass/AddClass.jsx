@@ -40,7 +40,7 @@ const AddClass = () => {
         };
         console.log(saveClasses);
 
-        fetch("http://localhost:5000/classes", {
+        fetch("https://yoga-zone-server.vercel.app/classes", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(saveClasses),

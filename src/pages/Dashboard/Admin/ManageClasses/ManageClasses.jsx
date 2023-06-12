@@ -5,13 +5,13 @@ import FeedbackModal from "../FeedbackModal/FeedbackModal";
 
 const ManageClasses = () => {
   const { data: classes = [], refetch } = useQuery(["class"], async () => {
-    const res = await fetch("http://localhost:5000/classes");
+    const res = await fetch("https://yoga-zone-server.vercel.app/classes");
     return res.json();
   });
   console.log(classes);
 
   const handleMakeApproved = (id) => {
-    fetch(`http://localhost:5000/classes/approved/${id}`, {
+    fetch(`https://yoga-zone-server.vercel.app/classes/approved/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -29,7 +29,7 @@ const ManageClasses = () => {
       });
   };
   const handleMakeDeny = (id) => {
-    fetch(`http://localhost:5000/classes/deny/${id}`, {
+    fetch(`https://yoga-zone-server.vercel.app/classes/deny/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

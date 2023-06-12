@@ -20,7 +20,7 @@ const CheckoutForm = ({ closeModal, item }) => {
   // useEffect(() => {
   //   console.log(price);
   //   // if (price > 0) {
-  //   fetch("http://localhost:5000/create-payment-intent", {
+  //   fetch("https://yoga-zone-server.vercel.app/create-payment-intent", {
   //     method: "POST",
   //     headers: { "content-type": "application/json" },
   //     body: JSON.stringify(price),

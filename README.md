@@ -42,4 +42,4 @@ It is an yoga zone web site. This web site is related to yoga and meditation.
 
 # Project Live Site Link
 
-Project:
+Project: https://yoga-zone-40088.web.app/

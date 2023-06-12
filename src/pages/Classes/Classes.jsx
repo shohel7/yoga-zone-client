@@ -21,7 +21,7 @@ const Classes = () => {
     queryKey: ["classesData"],
     queryFn: async () => {
       const data = await axios.get(
-        `http://localhost:5000/classes/approved?status=approved`
+        `https://yoga-zone-server.vercel.app/classes/approved?status=approved`
       );
       // console.log(data?.data);
       return data?.data;
@@ -38,7 +38,7 @@ const Classes = () => {
   const handleSelectedClass = (item) => {
     if (user) {
       console.log(item);
-      fetch(`http://localhost:5000/selectedClasses`, {
+      fetch(`https://yoga-zone-server.vercel.app/selectedClasses`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(item),
@@ -72,12 +72,7 @@ const Classes = () => {
 
   return (
     <div className="px-5 md:px-5 lg:max-w-[1230px] mx-auto">
-      <SectionTitle
-        heading={"All Approved Classes"}
-        paragraph={
-          "Yoga is a physical, mental, and spiritual practice or discipline. There is a broad variety of schools, practices and goals in Hinduism, Buddhism. The origins."
-        }
-      />
+      <SectionTitle heading={"All Approved Classes"} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-x-0">
         {classes.map((item) => (
           <div

@@ -11,7 +11,7 @@ const MyClasses = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/classes?instructorEmail=${user?.email}`
+        `https://yoga-zone-server.vercel.app/classes?instructorEmail=${user?.email}`
       );
       console.log("res from axios", res);
       return res.json();

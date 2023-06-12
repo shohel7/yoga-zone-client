@@ -5,7 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 // import useAuth from "./useAuth";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://yoga-zone-server.vercel.app",
 });
 
 const useAxiosSecure = () => {

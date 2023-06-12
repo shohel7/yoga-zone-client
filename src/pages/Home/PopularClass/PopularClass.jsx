@@ -12,7 +12,9 @@ const PopularClass = () => {
   } = useQuery({
     queryKey: ["data"],
     queryFn: async () => {
-      const data = await axios.get("http://localhost:5000/popularClasses");
+      const data = await axios.get(
+        "https://yoga-zone-server.vercel.app/popularClasses"
+      );
       // console.log(data?.data);
       return data?.data;
     },

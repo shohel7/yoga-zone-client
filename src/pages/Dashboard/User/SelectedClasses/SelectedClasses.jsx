@@ -15,7 +15,9 @@ const SelectedClasses = () => {
   } = useQuery({
     queryKey: ["Selected"],
     queryFn: async () => {
-      const data = await axios.get("http://localhost:5000/selectedClasses");
+      const data = await axios.get(
+        "https://yoga-zone-server.vercel.app/selectedClasses"
+      );
       // console.log(data?.data);
       return data?.data;
     },
@@ -30,7 +32,7 @@ const SelectedClasses = () => {
 
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/selectedClasses/${id}`, {
+    fetch(`https://yoga-zone-server.vercel.app/selectedClasses/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
